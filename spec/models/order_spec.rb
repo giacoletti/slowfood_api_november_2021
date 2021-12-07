@@ -1,17 +1,18 @@
 RSpec.describe Order, type: :model do
   describe 'Database Table' do
-    it { 
+    it {
       is_expected.to have_db_column(:id)
-        .of_type(:integer) 
+        .of_type(:integer)
     }
-    it { 
+    it {
       is_expected.to have_db_column(:user_id)
-        .of_type(:integer) 
+        .of_type(:integer)
     }
   end
 
   describe 'Associations' do
     it { is_expected.to belong_to(:user).required(true) }
+    it { is_expected.to have_many(:items).class_name('OrderItem') }
   end
 
   describe 'Factory' do
