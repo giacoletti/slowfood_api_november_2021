@@ -3,7 +3,7 @@ class Api::OrdersController < ApplicationController
     order = Order.create(order_params)
     product = Product.find(params[:order][:product_id])
     order.items.create(product: product)
-    render json: { order: order }, status: :created
+    render json: { order: order.serialized }, status: :created
   end
 
   def update
@@ -11,7 +11,7 @@ class Api::OrdersController < ApplicationController
     order = Order.find(params[:id])
     order.items.create(product: product)
     render json: {
-      order: order,
+      order: order.serialized,
       message: "#{product.name} was added to your order"
     }, status: 200
   end
