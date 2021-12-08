@@ -10,7 +10,7 @@ describe 'GET /api/products' do
     expect(subject.status).to eq 200
   end
 
-  it 'is expected to respond with an article' do
+  it 'is expected to respond with a product' do
     response_body = JSON.parse(response.body)
     expect(response_body['products'].first['name']).to eq 'Foo'
   end
