@@ -1,5 +1,13 @@
-require 'rails_helper'
-
 RSpec.describe Product, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'Database Table' do
+    it { is_expected.to have_db_column(:id).of_type(:integer) }
+    it { is_expected.to have_db_column(:name).of_type(:string) }
+    it { is_expected.to have_db_column(:price).of_type(:float) }
+  end
+
+  describe 'Factory' do
+    it 'is expected to be valid' do
+      expect(create(:product)).to be_valid
+    end
+  end
 end
