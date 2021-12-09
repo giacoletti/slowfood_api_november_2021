@@ -1,0 +1,6 @@
+class Api::ProductsController < ApplicationController
+  def index
+    products = Product.all
+    render json: { products: products }, status: 200
+  end
+end
