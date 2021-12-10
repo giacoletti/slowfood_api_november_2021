@@ -1,5 +1,3 @@
-# use that namespace
-# Restful use the name of the resource you're dealing with in the path
 RSpec.describe 'POST /api/orders' do
   subject { response }
   before do
