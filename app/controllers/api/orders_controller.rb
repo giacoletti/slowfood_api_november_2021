@@ -10,12 +10,3 @@ class Api::OrdersController < ApplicationController
     params[:order].permit(:user_id)
   end
 end
-
-# generate user model
-# migrate add_users_to_orders
-# create models order_spec
-# create models user_spec
-# add order belongs to user
-# add user has many orders
-# add factory bot for user
-# update requests spec
