@@ -1,4 +1,6 @@
 class Api::OrdersController < ApplicationController
+  # before_action :set_order_status, only: [:update]
+
   def create
     order = Order.create(order_params)
     product = Product.find(params[:order][:product_id])
@@ -10,7 +12,7 @@ class Api::OrdersController < ApplicationController
   end
 
   def update
-    product = Product.find(params[:order][:product_id])
+    product = Product.find(params[:product_id])
     order = Order.find(params[:id])
     order.items.create(product: product)
     render json: {
@@ -20,6 +22,11 @@ class Api::OrdersController < ApplicationController
   end
 
   private
+
+  # def set_order_status 
+  #   # update the order status
+  #   render json: { message: "Order status updated to #{params[:order][:status]}" }, status: 200 if params[:order][:status]
+  # end
 
   def order_params
     params[:order].permit(:user_id)
