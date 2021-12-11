@@ -27,4 +27,9 @@ RSpec.describe 'POST /api/orders', type: :request do
   it 'is expected to associate the product with order' do
     expect(@order.products.first).to eq product
   end
+
+  it 'is expected to include order_id in the response body' do
+    response_body = JSON.parse(response.body)
+    expect(response_body['order']['id']).to eq @order.id
+  end
 end
