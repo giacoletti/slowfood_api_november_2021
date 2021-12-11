@@ -1,5 +1,6 @@
 RSpec.describe 'POST /api/orders', type: :request do
   let!(:user) { create(:user) }
+  let(:product) { create(:product) }
   subject { response }
   before do
     post '/api/orders', params: {
