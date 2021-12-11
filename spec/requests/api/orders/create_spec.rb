@@ -5,7 +5,7 @@ RSpec.describe 'POST /api/orders', type: :request do
   before do
     post '/api/orders', params: {
       order:
-       { product_id: 1, user_id: user.id }
+       { product_id: product.id, user_id: user.id }
     }
     @order = Order.last
   end
@@ -18,5 +18,13 @@ RSpec.describe 'POST /api/orders', type: :request do
 
   it 'is expected to associate order with user' do
     expect(@order.user).to eq user
+  end
+
+  it 'is expected to create an order_item' do
+    expect(@order.items).to_not eq nil
+  end
+
+  it 'is expected to associate the product with order' do
+    expect(@order.products.first).to eq product
   end
 end
