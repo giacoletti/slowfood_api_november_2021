@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :product do
     name { 'Pancakes' }
-    price { 1.5 }
+    price { 25 }
   end
 end
