@@ -1,6 +1,6 @@
 describe 'GET /api/products' do
   subject { response }
-  let!(:product) { create(:product, name: 'Foo', price: 1.5) }
+  let!(:product) { create(:product) }
 
   before do
     get '/api/products'
@@ -10,8 +10,13 @@ describe 'GET /api/products' do
     expect(subject.status).to eq 200
   end
 
-  it 'is expected to respond with a product' do
+  it 'is expected to respond with a product name' do
     response_body = JSON.parse(response.body)
-    expect(response_body['products'].first['name']).to eq 'Foo'
+    expect(response_body['products'].first['name']).to eq 'Pancakes'
+  end
+
+  it 'is expected to respond with a product price' do
+    response_body = JSON.parse(response.body)
+    expect(response_body['products'].first['price']).to eq 25
   end
 end
