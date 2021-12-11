@@ -1,4 +1,4 @@
-RSpec.describe 'POST /api/orders' do
+RSpec.describe 'POST /api/orders', type: :request do
   subject { response }
   before do
     post '/api/orders', params: { order: { product_id: 1, user_id: 1 } }
