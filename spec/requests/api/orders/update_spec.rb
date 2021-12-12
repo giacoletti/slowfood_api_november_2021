@@ -16,14 +16,14 @@ RSpec.describe 'PUT /api/orders/:id', type: :request do
   end
 
   describe 'params are missing when to update order' do
-
     before do
-      put "/api/orders/#{order.id}", params: { product_id: product2.id }
+      put "/api/orders/#{order.id}", params: {}
     end
-  
+
     it { is_expected.to have_http_status :unprocessable_entity }
 
     it 'is excepted to respond with a error message if product is not in database' do
+      expect(response_json['message']).to eq 'Missing product id'
     end
   end
 end
